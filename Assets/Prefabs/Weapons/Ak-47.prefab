@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3229804233712606139
 Transform:
   m_ObjectHideFlags: 0
@@ -147,8 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FpsCamera: {fileID: 0}
-  range: 100
-  shotPower: 100
   muzzleFlash: {fileID: 8540186736546792216, guid: 7aec18d516302f64b8df3a3dc95ebed5,
     type: 3}
   barrelLocation: {fileID: 7142800521484116250}
@@ -156,11 +154,16 @@ MonoBehaviour:
     type: 3}
   crosshair: {fileID: 5572103195358978556, guid: 9f9b6a62f02d4624b9624b342b3dff50,
     type: 3}
-  baseFieldOfView: 60
-  zoomInFiledOfView: 20
   ammoSlot: {fileID: 0}
   ammoTypes: 1
+  range: 100
   timeBetweenShots: 0.1
+  reloadTime: 0
+  baseFieldOfView: 60
+  zoomInFiledOfView: 20
+  shotPower: 100
+  ammoPerClip: 7
+  currentAmmo: 0
 --- !u!1 &3229804233712306077
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4726871402218594634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.098, z: 0.781}
+  m_LocalPosition: {x: 0, y: 0.098, z: 0.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3229804233712606139}

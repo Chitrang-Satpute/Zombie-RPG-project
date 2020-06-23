@@ -11,22 +11,22 @@ public class Ammo : MonoBehaviour
     private class AmmoSlot
     {
         public AmmoTypes ammoTypes;
-        public int ammoAmmount ;
+        public int maxAmmoAmmount ;
     }
 
      public int GetCurrentAmmo(AmmoTypes ammoTypes)
     {
-        return GetAmmoSlot(ammoTypes).ammoAmmount;
+        return GetAmmoSlot(ammoTypes).maxAmmoAmmount;
     }
 
     public void ReduceCurrentAmmo(AmmoTypes ammoTypes)
     {
-       GetAmmoSlot(ammoTypes).ammoAmmount--;
+       GetAmmoSlot(ammoTypes).maxAmmoAmmount--;
     }
 
     public void IncreaseCurrentAmmo(AmmoTypes ammoTypes,int ammoAmount)
     {
-        GetAmmoSlot(ammoTypes).ammoAmmount += ammoAmount;
+        GetAmmoSlot(ammoTypes).maxAmmoAmmount += ammoAmount;
     }
 
     private AmmoSlot GetAmmoSlot(AmmoTypes ammoTypes)

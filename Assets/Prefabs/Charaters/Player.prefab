@@ -66,19 +66,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FpsCamera: {fileID: 9080264050988813375}
-  range: 50
-  shotPower: 50
   muzzleFlash: {fileID: 8540186736546792216, guid: 7aec18d516302f64b8df3a3dc95ebed5,
     type: 3}
   barrelLocation: {fileID: 9080264052248918979}
   bulletImpact: {fileID: 5530408211025510780, guid: 9fdd292785700ea4ab72e701a23bb5ae,
     type: 3}
   crosshair: {fileID: 0}
-  baseFieldOfView: 60
-  zoomInFiledOfView: 20
   ammoSlot: {fileID: 6069879631595349953}
   ammoTypes: 0
-  timeBetweenShots: 0.5
+  range: 50
+  timeBetweenShots: 0.09
+  reloadTime: 2.1
+  baseFieldOfView: 60
+  zoomInFiledOfView: 20
+  shotPower: 21
+  ammoPerClip: 7
+  currentAmmo: 0
 --- !u!1 &9080264050891273556
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,9 +506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSlot:
   - ammoTypes: 0
-    ammoAmmount: 7
+    maxAmmoAmmount: 56
   - ammoTypes: 1
-    ammoAmmount: 56
+    maxAmmoAmmount: 280
 --- !u!1 &9080264051171559167
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +958,21 @@ PrefabInstance:
       propertyPath: ammoSlot
       value: 
       objectReference: {fileID: 6069879631595349953}
+    - target: {fileID: 1649899723201971696, guid: 2a0e21b282f14a14384dd2d442060ec9,
+        type: 3}
+      propertyPath: shotPower
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649899723201971696, guid: 2a0e21b282f14a14384dd2d442060ec9,
+        type: 3}
+      propertyPath: ammoPerClip
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649899723201971696, guid: 2a0e21b282f14a14384dd2d442060ec9,
+        type: 3}
+      propertyPath: reloadTime
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3229804233712306075, guid: 2a0e21b282f14a14384dd2d442060ec9,
         type: 3}
       propertyPath: m_Name
@@ -963,7 +981,7 @@ PrefabInstance:
     - target: {fileID: 3229804233712306075, guid: 2a0e21b282f14a14384dd2d442060ec9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3229804233712606139, guid: 2a0e21b282f14a14384dd2d442060ec9,
         type: 3}

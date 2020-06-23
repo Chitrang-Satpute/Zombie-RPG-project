@@ -6,27 +6,27 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] Camera FpsCamera;
-    [SerializeField] float range;
-    [SerializeField] float shotPower = 50;
+    [SerializeField] Camera FpsCamera;  
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] Transform barrelLocation;
-    [SerializeField] GameObject bulletImpact;
-    [SerializeField] GameObject crosshair;
-    [SerializeField] float baseFieldOfView;
-    [SerializeField] float zoomInFiledOfView;
+    [SerializeField] GameObject bulletImpact, crosshair;
     [SerializeField] Ammo ammoSlot;
     [SerializeField] AmmoTypes ammoTypes;
-    [SerializeField] float timeBetweenShots;
-
     Animator animator;
+
+    [SerializeField] float range, timeBetweenShots, reloadTime, baseFieldOfView, zoomInFiledOfView;
+    [SerializeField] int shotPower;
+    [SerializeField] int ammoPerClip = 7;
+    [SerializeField] int currentAmmo;
     private bool isScoped = false;
     bool canShoot = true;
+    bool isReloading = false;
    
     private void Start()
     {
         animator = GetComponent<Animator>();
         crosshair.SetActive(true);
+        currentAmmo = ammoPerClip;
     }
 
     private void OnEnable()
@@ -35,18 +35,32 @@ public class Weapon : MonoBehaviour
         {
             Invoke("WaitToShoot", timeBetweenShots);
         }
+        isReloading = false;
     }
 
     
 
     void Update()
     {
+        if (isReloading)
+        {
+            return;
+        }
+
+        //Weapon Reload Method
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(ReloadWeapon());
+            return;
+        }
+
+        //Callin Weapon Shoot Method
         if (Input.GetButtonDown("Fire1")&& canShoot == true && ammoSlot.GetCurrentAmmo(ammoTypes) > 0)
         {
             StartCoroutine(Shoot());    
         }
 
-
+        //Weapon Zoom-In & Zoom-Out Method
         if (Input.GetButtonDown("Fire2"))
         {
             isScoped = !isScoped;
@@ -71,25 +85,29 @@ public class Weapon : MonoBehaviour
             animator.SetBool("Scope", false);
         }
         
-
+       
     }
 
+   
+    //Weapon Shoot Method
     IEnumerator Shoot()
     {
+        currentAmmo--;
         canShoot = false;
         MuzzelEffect();
         ProcessRayCast();
         ammoSlot.ReduceCurrentAmmo(ammoTypes);
-        
         yield return new WaitForSeconds(timeBetweenShots);
         canShoot = true;
     }
 
+    //Weapon Shoting VFX Effect
     private void MuzzelEffect()
     {
         Instantiate(muzzleFlash, barrelLocation.position, Quaternion.identity);
     }
 
+    //RayCast Method
     private void ProcessRayCast()
     {
         RaycastHit hit;
@@ -109,14 +127,27 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //BulletImapact Method
     private void BulletImpactEffect(RaycastHit hit)
     {
         var impactVfx = Instantiate(bulletImpact, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactVfx, 1f);
         
     }
+    
+    //Wating Time Between Each Shoot
     void WaitToShoot()
     {
         canShoot = true;
+    }
+
+    //Weapon Reload Method
+     IEnumerator ReloadWeapon()
+    {
+        print("Reloading");
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = ammoPerClip;
+        isReloading = false;
     }
 }

@@ -23,7 +23,6 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
-
     }
    
     void Update()
@@ -36,8 +35,7 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(target.position, transform.position);
         if (isProvoke)
         {
-            EngageTarget();
-            
+            EngageTarget();           
         }
          else if(distanceToTarget <= chaseRang)
         {
@@ -48,6 +46,7 @@ public class EnemyAI : MonoBehaviour
 
     public void OnDamageTaken()
     {
+        animator.SetTrigger("Taking Damage");
         isProvoke = true;
     }
 
@@ -56,13 +55,11 @@ public class EnemyAI : MonoBehaviour
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
-            RotateTowardPlayer();
-            print("If condition is working");
+            RotateTowardPlayer();          
         }
         if (distanceToTarget >= navMeshAgent.stoppingDistance)
         {
             ChaseTarget();
-
         }
         
     }
@@ -72,12 +69,10 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(target.position);
         animator.SetTrigger("Move");
         animator.ResetTrigger("Attack");
-        print("In Chase Target ");
     }
 
     private void AttackTarget()
     {
-        print("In Attack Target is working");
         animator.SetTrigger("Attack");
     }
 

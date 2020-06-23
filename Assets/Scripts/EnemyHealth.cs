@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] float enemyHealth = 100f;
+    [SerializeField] int enemyHealth = 100;
     bool isDead = false;
    
-    public void ReduceEnemyHealth(float damage)
+    public void ReduceEnemyHealth(int damage)
     {
         BroadcastMessage("OnDamageTaken");
         enemyHealth -= damage;
