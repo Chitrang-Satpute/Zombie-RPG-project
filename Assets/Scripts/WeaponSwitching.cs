@@ -15,7 +15,7 @@ public class WeaponSwitching : MonoBehaviour
     {
         SelectWeapon();
         animator = GetComponentInChildren<Animator>();
-        animator.keepAnimatorControllerStateOnDisable = false;
+        //animator.keepAnimatorControllerStateOnDisable = false;
 
 
     }

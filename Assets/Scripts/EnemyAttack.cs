@@ -22,6 +22,7 @@ public class EnemyAttack : MonoBehaviour
         {
             
             target.ReducePlayerHealth(damageToPlayer);
+            
         }
 
     }

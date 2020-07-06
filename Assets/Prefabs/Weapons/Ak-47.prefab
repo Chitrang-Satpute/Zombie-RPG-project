@@ -146,24 +146,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dc05f6fdb80e46b44e93482dfbd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FpsCamera: {fileID: 0}
+  fpsCamera: {fileID: 0}
   muzzleFlash: {fileID: 8540186736546792216, guid: 7aec18d516302f64b8df3a3dc95ebed5,
     type: 3}
   barrelLocation: {fileID: 7142800521484116250}
   bulletImpact: {fileID: 5530408211025510780, guid: 9fdd292785700ea4ab72e701a23bb5ae,
     type: 3}
-  crosshair: {fileID: 5572103195358978556, guid: 9f9b6a62f02d4624b9624b342b3dff50,
+  crosshair: {fileID: 9138675083509671756, guid: 8b5582da8ee401b4999a182027cc4c9f,
     type: 3}
   ammoSlot: {fileID: 0}
   ammoTypes: 1
   range: 100
   timeBetweenShots: 0.1
-  reloadTime: 0
+  reloadTime: 2.3
   baseFieldOfView: 60
   zoomInFiledOfView: 20
-  shotPower: 100
-  ammoPerClip: 7
+  sperad: 0
+  shotPower: 47
+  ammoPerClip: 30
   currentAmmo: 0
+  allowbuttonHold: 0
+  bulletpershot: 1
 --- !u!1 &3229804233712306077
 GameObject:
   m_ObjectHideFlags: 0
