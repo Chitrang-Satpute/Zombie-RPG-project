@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float chaseRang = 5f;
     [SerializeField] float turningSpeed = 5f;
     EnemyHealth enemyHealth;
-
+   
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
+    
     }
    
     void Update()

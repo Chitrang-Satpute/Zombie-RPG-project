@@ -7,7 +7,15 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 100;
     bool isDead = false;
-   
+    RandomDropItem randomDrop;
+    public GameObject drops;
+
+
+    private void Start()
+    {
+        randomDrop = GetComponent<RandomDropItem>();
+       
+    }
     public void ReduceEnemyHealth(int damage)
     {
         BroadcastMessage("OnDamageTaken");
@@ -15,7 +23,8 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHealth <= 0)
         {
             Die();
-        }
+            
+        }        
     }
 
     public bool IsDead()
@@ -27,7 +36,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead) return;  
         GetComponent<Animator>().SetTrigger("Die");
+        randomDrop.DropItems();
+        Instantiate(drops, transform.position, Quaternion.identity);
         isDead = true;
-
+        Destroy(gameObject, 5f);
     }
 }
