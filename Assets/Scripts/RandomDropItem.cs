@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class RandomDropItem : MonoBehaviour
 {
+    
     public List<GameObject> drops;
+    
     public int[] table =
         { 
         60, //Drop cube 
@@ -17,30 +19,33 @@ public class RandomDropItem : MonoBehaviour
     public int randomNumber;
 
     public void DropItems()
-    {
-
-        foreach (var item in table)
         {
-            total += item;
-        }
 
-        //Generate Random Number
-        randomNumber = Random.Range(0, total);
-        
-        for (int i = 0; i < table.Length; i++)
-        {
-            //Comparing is my random number <= to the current weight?
-            if (randomNumber <= table[i])
+            foreach (var item in table)
             {
-                //Award the drop
-                drops[i].SetActive(true);
-              
+                total += item;
             }
-            else
+
+            //Generate Random Number
+            randomNumber = Random.Range(0, total);
+
+            for (int i = 0; i < table.Length; i++)
             {
-                randomNumber -= table[i];  
-            }          
-        }     
-         
-    }
+
+                //Comparing is my random number <= to the current weight?
+                if (randomNumber <= table[i])
+                {
+                    Debug.Log(randomNumber + "" + drops[i].name);
+                    //Award the drop
+                    
+                    Instantiate(drops[i], transform.position, Quaternion.identity);
+                break;
+                }
+                else
+                {
+                    randomNumber -= table[i];
+                }
+            }
+        }
 }
+

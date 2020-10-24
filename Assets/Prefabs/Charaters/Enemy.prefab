@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7090274893807334560}
   - component: {fileID: 584436882}
   - component: {fileID: 584436883}
+  - component: {fileID: 2024346583}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -77,6 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &7090274893807334572
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b90e1edb1503b94aa9ec3d0c06f5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 9080264051089017125, guid: 30cf0f58a6a73944d8e2a83053fdb737, type: 3}
   chaseRang: 10
   turningSpeed: 5
 --- !u!114 &584436882
@@ -173,6 +176,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToPlayer: 10
+--- !u!114 &2024346583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090274893807334570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a36f08ee08ddc4893199af11bbda7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - {fileID: 7669302837423329126, guid: 650d53eabe4302b40aaf99a7b653b536, type: 3}
+  - {fileID: 5838641391690716302, guid: 6ed512d531bb1a84397c45b2f70d64d5, type: 3}
+  - {fileID: 960421359923487357, guid: 2150c6fe8655230428bae4c841ac1349, type: 3}
+  dropsLocation: {fileID: 8524966858564455199, guid: 7dae110998acae9448a8162d5358b5f9,
+    type: 3}
+  table: 320000002d00000005000000
+  total: 0
+  randomNumber: 0
 --- !u!1001 &4454145500075749712
 PrefabInstance:
   m_ObjectHideFlags: 0

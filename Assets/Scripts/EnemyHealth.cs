@@ -8,11 +8,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int enemyHealth = 100;
     bool isDead = false;
     RandomDropItem randomDrop;
-    public GameObject drops;
+  
 
 
     private void Start()
     {
+
         randomDrop = GetComponent<RandomDropItem>();
        
     }
@@ -32,13 +33,19 @@ public class EnemyHealth : MonoBehaviour
         return isDead;
     }
 
+  
     private void Die()
     {
         if (isDead) return;  
         GetComponent<Animator>().SetTrigger("Die");
-        randomDrop.DropItems();
-        Instantiate(drops, transform.position, Quaternion.identity);
         isDead = true;
+        randomDrop.DropItems();
+        
         Destroy(gameObject, 5f);
     }
+   
+    
+       
+    
+
 }
